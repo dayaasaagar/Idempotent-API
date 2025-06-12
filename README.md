@@ -1,12 +1,31 @@
-1. I created 4 servers using Node.js to simulate distributed system.
-2. Used UUID based idempotency key which I passed through headers. 
-3. Stored the responses in redis cache with a TTL of 5 mins
-4. On duplicate request, served the cached response. 
+# 💳 Idempotent API Simulation Using Node.js and Redis
 
-Test Cases:
-1) 201, Created Cache: false
-2) 200 OK, Cached: true
-3) Corrupted Redis Data: forced invalid value and caught JSON parse failure. (500 response).
-4) Missing Idempotency key-> 400 Bad request.
 
-This ensures that each transaction is processed only once, regardless how many times the request was sent from any server.
+---
+
+## 🚀 Features
+
+- Prevents duplicate payment processing
+- Uses UUID-based `Idempotency-Key` in headers
+- Stores responses in Redis with TTL (5 minutes)
+- Serves cached responses for duplicate requests
+- Simulates distributed environment by running multiple servers
+
+---
+
+## 🛠️ Technologies Used
+
+- Node.js
+- Express.js
+- Redis (via `ioredis`)
+- Optional: Docker (for Redis)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/idempotent-api-node.git
+cd idempotent-api-node
